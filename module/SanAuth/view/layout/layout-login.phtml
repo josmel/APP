@@ -1,0 +1,45 @@
+<?php echo $this->doctype(); ?>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="es"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="es"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="es"> <![endif]-->
+<!--[if gt IE 8]> <html lang="es"> <![endif]-->
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Administrador Fuxion</title>
+  <meta name="title" content="Municipalidad La Molina"/>
+  <meta name="description" content="Municipalidad La Molina"/>
+  <meta name="keywords" content="municipalidad, la molina"/>
+  <meta name="author" content="onlinestudioproductions.com"/>
+  <meta name="viewport" content="width=device-width"/>
+  <meta name="language" content="es"/>
+  <meta name="robots" content="noindex"/>
+  <link type="text/css" rel="stylesheet" href="<?php echo $this->basePath("css/admin.css")?>"/>
+  <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css' />
+  <!--[if lt IE 9]><script src="<?php echo $this->basePath("js/libs/html5shiv.js")?>"></script><![endif]-->
+</head>
+<body>
+	<?php echo $this->content; ?>
+	<footer>
+            <div class="box-center">
+                    <p>©Copyright 2013. Todos los derechos reservados. Este admin fué desarrollado por <a target="_blank" href="http://www.onlinestudioproductions.com/">OnlineStudioProductions</a></p>
+            </div>
+        </footer>
+        <script type="text/javascript">
+            var yOSON ={
+                "modulo":"<?php echo $this->module?>",
+                "controller":"<?php echo $this->controller?>",
+                "action":"<?php echo $this->action?>",
+                "baseHost":"",
+                "statHost":"",
+                "statVers":"?vcx27w",
+                "min":"","AppCore":{},"AppSandbox":{},"AppSchema":{"modules":{},"requires":{}}
+              };
+        </script>
+	<script src="<?php echo $this->basePath("js/libs/framework.js");?>"></script>
+	<script src="<?php echo $this->basePath("js/application/yoson.js");?>"></script>
+	<script src="<?php echo $this->basePath("js/modules/admin.js");?>"></script>
+	<script src="<?php echo $this->basePath("js/application/schemas/modules.js");?>"></script>
+	<script src="<?php echo $this->basePath("js/application/appLoad.js");?>"></script>
+</body>
+</html>

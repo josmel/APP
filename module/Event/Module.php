@@ -14,6 +14,10 @@ use Zend\Mvc\ModuleRouteListener;
 use Zend\Mvc\MvcEvent;
 use Event\Model\Event;
 use Event\Model\EventTable;
+use Event\Model\Place;
+use Event\Model\PlaceTable;
+use Event\Model\Complaint;
+use Event\Model\ComplaintTable;
 use Zend\Db\ResultSet\ResultSet;
 use Zend\Db\TableGateway\TableGateway;
 
@@ -56,6 +60,28 @@ class Module
                     $resultSetPrototype = new ResultSet();
                     $resultSetPrototype->setArrayObjectPrototype(new Event());
                     return new TableGateway('event', $dbAdapter, null, $resultSetPrototype);//
+                },
+                 'Event\Model\ComplaintTable' =>  function($sm) {
+                    $tableGateway = $sm->get('ComplaintTableGateway');
+                    $table = new ComplaintTable($tableGateway);
+                    return $table;
+                },
+                'ComplaintTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Complaint());
+                    return new TableGateway('complaint', $dbAdapter, null, $resultSetPrototype);//
+                },
+                'Event\Model\PlaceTable' =>  function($sm) {
+                    $tableGateway = $sm->get('PlaceTableGateway');
+                    $table = new PlaceTable($tableGateway);
+                    return $table;
+                },
+                'PlaceTableGateway' => function ($sm) {
+                    $dbAdapter = $sm->get('Zend\Db\Adapter\Adapter');
+                    $resultSetPrototype = new ResultSet();
+                    $resultSetPrototype->setArrayObjectPrototype(new Place());
+                    return new TableGateway('place', $dbAdapter, null, $resultSetPrototype);//
                 },
        
             ),

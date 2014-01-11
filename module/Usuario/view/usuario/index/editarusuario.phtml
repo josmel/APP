@@ -1,0 +1,51 @@
+
+<div class="content-login">
+ <?php if ($this->message) { ?>
+            <?php //foreach ($this->messages as $message) { ?>
+                    <div class="alert">
+                        <?php echo $this->message; ?>
+                    </div>
+            <?php// } ?>
+        <?php } ?>
+    <div class="login-panel frm-panel">
+ <?php
+ $form = $this->form;
+ $form->setAttributes(array(
+                        'action' => '/micuenta' ,
+                        'method' => 'post',
+                        'class' => 'form-horizontal usuario-actualizar'
+                    ));
+ $form->prepare();
+ echo $this->form()->openTag($form);?>
+ <?php echo $this->formHidden($form->get('iduser'));?>
+   <div class="frm-head">
+                <h2><span></span>Datos de Usuario</h2>
+            </div>
+             <div class="control-group">
+                <label for="text" class="control-label">Usuario:</label>
+                <div class="controls">
+                    <?php echo $this->formRow($form->get('userName'));?>
+                </div>
+            </div>
+       <div class="control-group">
+                <label for="text" class="control-label">Nombre de Usuario:</label>
+                <div class="controls">
+                    <?php echo $this->formRow($form->get('name'));?>
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="text" class="control-label">Apellidos:</label>
+                <div class="controls">
+                    <?php echo $this->formRow($form->get('lastName'));?>
+                </div>
+            </div>
+            <div class="control-group last">
+                <div class="control">
+                    <button class="btn-admin" type="submit">Cambiar</button>
+                </div>
+            </div>
+  <?php echo $this->form()->closeTag();?>
+  </div>
+ </div> 
+
+  

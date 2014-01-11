@@ -1,1 +1,103 @@
-as
+<h3 class="admin-title">Eventos</h3>
+<div class="frm-panel">
+    <div class="frm-head">
+        <h2><span class="icCalendar"></span>Calendario</h2>
+    </div>
+    <div id="calendar"></div>
+</div>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+<script id="tplEvent" type="text/template">
+<div class="popEvent">
+    <h2>{{= title }}<a class="editEvent" href="javascript:;" title="Editar">Editar</a></h2>
+    <div class="control-group">
+        <label class="control-label ctrl-txt">Descripción:</label>
+        <div class="controls">{{= description}}</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label ctrl-txt">Fecha:</label>
+        <div class="controls">{{= fullDate}}</div>
+    </div>
+    <div class="control-group">
+        <label class="control-label">Ubicacion:</label>
+        <div class="controls">
+            <div id="mapa"></div>
+        </div>
+    </div>
+    <div class="control-group">
+        <label class="control-label ctrl-txt" for="location">Dirección:</label>
+        <div class="controls">{{= location  }}</div>
+    </div>
+    <div class="control-group last">
+        <label class="control-label">Imagen:</label>
+        <div class="controls">
+            <div class="ctn-eventImg">
+                <img id="eventImg" src="{{= img}}" width="200" height="200" />
+            </div>
+        </div>
+    </div>
+</div>
+</script>
+<script id="tplEventEdit" type="text/template">
+<div class="popEvent">
+    <h2>{{= event }}</h2>
+    <form id="frmEvent">
+        <div class="control-group">
+            <label class="control-label" for="name">Título del Evento:</label>
+            <div class="controls">
+                <input type="text" id="name" name="name" value="{{ if(typeof title!="undefined"){ }} {{= title }} {{ } }}" />
+                {{ if(typeof idevent!="undefined"){ }}<input type="hidden" name="idevent" value="{{= idevent}}" />{{ } }}
+                <input type="hidden" name="start" value="{{= dateStart}}" />
+                <input type="hidden" name="end" value="{{= dateEnd}}" />
+                <input type="hidden" name="allDay" value="{{= flagDate}}" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="description">Descripción:</label>
+            <div class="controls">
+                <textarea id="description" name="description">{{ if(typeof description!="undefined"){ }} {{= description }} {{ } }}</textarea>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="inptSearchMap">Ubicacion:</label>
+            <div id="ctnMap" class="controls-inline">
+                <div class="controls w320 mb12">
+                    <input id="inptSearchMap" type="text" name="txtSearch" />
+                </div>
+                <div class="controls mb12">
+                    <button type="button" class="btn-admin" id="btnSearchMap">BUSCAR</button>
+                </div>
+                <div id="mapa"></div>
+                <input type="hidden" id="latitude" name="latitude" value="{{= lat}}" />
+                <input type="hidden" id="longitude" name="longitude" value="{{= lng}}" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="location">Dirección:</label>
+            <div class="controls">
+                <input type="text" id="location" name="location" value="{{ if(typeof address!="undefined"){ }} {{= address }} {{ } }}" />
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label">Imagen:</label>
+            <div class="controls">
+                <div class="ctn-eventImg">
+                    <img id="eventImg" src="{{= img}}" width="200" height="200" />
+                    <a id="btnFile" href="javascript:;">SUBIR IMAGEN</a>
+                    <input type="hidden" id="picture" name="picture" value="{{ if(typeof nameImg!="undefined"){ }} {{= nameImg }} {{ } }}" />
+                </div>
+            </div>
+        </div>
+        <div class="control-group">
+            <label class="control-label" for="flagAct">Activo:</label>
+            <div class="controls">
+                <input type="checkbox" value="1" id="flagAct" {{ if(flagAct){ }}checked="checked"{{ } }} name="flagAct">
+            </div>
+        </div>
+        <div class="control-group last">
+            <div class="control">
+                <button id="saveEvent" type="submit" class="btn-admin">{{= event}}</button>
+            </div>
+        </div>
+    </form>
+</div>
+</script>

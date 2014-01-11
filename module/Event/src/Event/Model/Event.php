@@ -18,6 +18,7 @@ class Event implements InputFilterAwareInterface
     public $lastUpdate;
     public $user_iduser;
     public $picture;
+    public $evento;
 
     
    
@@ -33,7 +34,8 @@ class Event implements InputFilterAwareInterface
             $this->dateEvent= (!empty($data['dateEvent'])) ? $data['dateEvent'] : null;
             $this->lastUpdate= (!empty($data['lastUpdate'])) ? $data['lastUpdate'] : null;
             $this->user_iduser= (!empty($data['user_iduser'])) ? $data['user_iduser'] : null;
-             $this->picture= (!empty($data['picture'])) ? $data['picture'] : null;
+           $this->picture= (!empty($data['picture'])) ? $data['picture'] : null;
+            $this->evento= (!empty($data['evento'])) ? $data['evento'] : null;
  
          }
     

@@ -1,0 +1,52 @@
+
+<div class="content-login">
+ <?php if ($this->message) { ?>
+            <?php //foreach ($this->messages as $message) { ?>
+                    <div class="alert">
+                        <?php echo $this->message; ?>
+                    </div>
+            <?php// } ?>
+        <?php } ?>
+ 
+ <div class="login-panel frm-panel">
+ <?php
+ $form = $this->form;
+ $form->setAttributes(array(
+                        'action' => '/password' ,
+                        'method' => 'post',
+                        'class' => 'form-horizontal usuario-actualizar'
+                    ));
+ $form->prepare();
+
+ echo $this->form()->openTag($form); ?>
+      <?php echo $this->formHidden($form->get('iduser'));?>
+   <div class="frm-head">
+                <h2><span></span>Cambiar Contraseña</h2>
+            </div>
+             <div class="control-group">
+                <label for="password" class="control-label">Contraseña Antigua:</label>
+                <div class="controls">
+                    <?php echo $this->formRow($form->get('password'));?>
+                </div>
+            </div>
+       <div class="control-group">
+                <label for="password" class="control-label">Contraseña Nueva:</label>
+                <div class="controls">
+                    <?php echo $this->formRow($form->get('passwordone'));?>
+                </div>
+            </div>
+            <div class="control-group">
+                <label for="password" class="control-label">Confirmar Contraseña:</label>
+                <div class="controls">
+                    <?php echo $this->formRow($form->get('passwordtwo'));?>
+                </div>
+            </div>
+            <div class="control-group last">
+                <div class="control">
+                    <button class="btn-admin" type="submit">Actualizar</button>
+                </div>
+            </div>
+  <?php echo $this->form()->closeTag();?>
+  </div>
+ </div> 
+  

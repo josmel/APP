@@ -1,55 +1,83 @@
 <?php echo $this->doctype(); ?>
-
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <?php echo $this->headTitle('ZF2 '. $this->translate('Skeleton Application'))->setSeparator(' - ')->setAutoEscape(false) ?>
-
-        <?php echo $this->headMeta()
-            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
-            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
-        ?>
-
-        <!-- Le styles -->
-        <?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
-                        ->prependStylesheet($this->basePath() . '/css/style.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap-theme.min.css')
-                        ->prependStylesheet($this->basePath() . '/css/bootstrap.min.css') ?>
-
-        <!-- Scripts -->
-        <?php echo $this->headScript()
-            ->prependFile($this->basePath() . '/js/bootstrap.min.js')
-            ->prependFile($this->basePath() . '/js/jquery.min.js')
-            ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
-            ->prependFile($this->basePath() . '/js/html5shiv.js',   'text/javascript', array('conditional' => 'lt IE 9',))
-        ; ?>
-
-    </head>
-    <body>
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="<?php echo $this->url('home') ?>"><img src="<?php echo $this->basePath('img/zf2-logo.png') ?>" alt="Zend Framework 2"/>&nbsp;<?php echo $this->translate('Skeleton Application') ?></a>
+<!--[if lt IE 7]> <html class="lt-ie9 lt-ie8 lt-ie7" lang="es"> <![endif]-->
+<!--[if IE 7]>    <html class="lt-ie9 lt-ie8" lang="es"> <![endif]-->
+<!--[if IE 8]>    <html class="lt-ie9" lang="es"> <![endif]-->
+<!--[if gt IE 8]> <html lang="es"> <![endif]-->
+<head>
+  <meta charset="utf-8"/>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>Municipalidad La Molina</title>
+  <meta name="title" content="Municipalidad La Molina"/>
+  <meta name="description" content="Municipalidad La Molina"/>
+  <meta name="keywords" content="municipalidad, la molina"/>
+  <meta name="author" content="onlinestudioproductions.com"/>
+  <meta name="viewport" content="width=device-width"/>
+  <meta name="language" content="es"/>
+  <meta name="robots" content="noindex"/>
+  <link type="text/css" rel="stylesheet" href="<?php echo $this->basePath("css/admin.css")?>"/>
+  <link href='http://fonts.googleapis.com/css?family=Cuprum' rel='stylesheet' type='text/css' />
+  <!--[if lt IE 9]><script src="<?php echo $this->basePath("js/libs/html5shiv.js")?>"></script><![endif]-->
+</head>
+<body>
+	<header>
+            <div class="fix">
+              <div class="box-center">
+                <div class="head-user">
+                  <span></span>Hola, <?php echo $this->session->name ?>
                 </div>
-                <div class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="<?php echo $this->url('home') ?>"><?php echo $this->translate('Home') ?></a></li>
-                    </ul>
-                </div><!--/.nav-collapse -->
+                <ul class="head-options">
+                  <li>
+                      <a title="Cambiar Password" href="/password"><span ></span>Password</a>
+                  </li>
+                  <li>
+                      <a title="Perfil" href="/micuenta"><span class="ichd-perfil"></span>Perfil</a>
+                  </li>
+                  <li>
+                    <a title="Logout" href="/logout"><span class="ichd-logout"></span>Logout</a>
+                  </li>
+                </ul>
+              </div>
             </div>
-        </nav>
-        <div class="container">
-            <?php echo $this->content; ?>
-            <hr>
-            <footer>
-                <p>&copy; 2005 - <?php echo date('Y') ?> by Zend Technologies Ltd. <?php echo $this->translate('All rights reserved.') ?></p>
-            </footer>
-        </div> <!-- /container -->
-        <?php echo $this->inlineScript() ?>
-    </body>
+          </header>
+	<div id="wrapper">
+		<aside class="sidebar">
+			<img class="side-logo" src="<?php echo $this->basePath("img/logo.png"); ?>" width="212" height="60" />
+			<ul class="admin-menu">
+                            <li>
+                                <a title="Dashboard" href="/" class="active"><span class="icad-dashb"></span>Dashboard</a>
+                            </li>
+                            <li>
+                                <a title="Eventos" href="/" ><span class="icad-prom"></span>Eventos</a>
+                            </li>
+                             <li>
+                                <a title="Denuncias" href="/complaint" ><span class="icad-prom"></span>Denuncias</a>
+                            </li>
+                    </ul>
+		</aside>
+		<div class="container">
+			<?php echo $this->content; ?>
+		</div>
+	</div>
+	<footer>
+            <div class="box-center">
+                    <p>©Copyright 2013. Todos los derechos reservados. Este admin fué desarrollado por <a target="_blank" href="http://www.onlinestudioproductions.com/">OnlineStudioProductions</a></p>
+            </div>
+        </footer>
+        <script type="text/javascript">
+            var yOSON ={
+                "modulo":"<?php echo $this->module?>",
+                "controller":"<?php echo $this->controller?>",
+                "action":"<?php echo $this->action?>",
+                "baseHost":"",
+                "statHost":"",
+                "statVers":"?vcx27w",
+                "min":"","AppCore":{},"AppSandbox":{},"AppSchema":{"modules":{},"requires":{}}
+              };
+        </script>
+	<script src="<?php echo $this->basePath("js/libs/framework.js");?>"></script>
+	<script src="<?php echo $this->basePath("js/application/yoson.js");?>"></script>
+	<script src="<?php echo $this->basePath("js/modules/admin.js");?>"></script>
+	<script src="<?php echo $this->basePath("js/application/schemas/modules.js");?>"></script>
+	<script src="<?php echo $this->basePath("js/application/appLoad.js");?>"></script>
+</body>
 </html>

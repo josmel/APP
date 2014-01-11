@@ -8,12 +8,13 @@
  */
 
 return array(
+    
     'router' => array(
         'routes' => array(
             'event' => array(
                 'type' => 'Zend\Mvc\Router\Http\Literal',
                 'options' => array(
-                    'route'    => '/event',
+                    'route'    => '/',
                     'defaults' => array(
                         'controller' => 'Event\Controller\Index',
                         'action'     => 'index',
@@ -27,7 +28,7 @@ return array(
             'event' => array(
                 'type'    => 'Literal',
                 'options' => array(
-                    'route'    => '/event',
+                    'route'    => '/',
                     'defaults' => array(
                         '__NAMESPACE__' => 'Event\Controller',
                         'controller'    => 'Index',
@@ -49,7 +50,69 @@ return array(
                         ),
                     ),
                 ),
-            ),
+            ), 
+            
+           'yes' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/place',//[/:in_id]
+                    'defaults' => array(
+                        'controller' => 'Event\Controller\Place',
+                        'action' => 'index'
+                    )
+                ),
+               ),
+            'complaint' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/complaint',//[/:in_id]
+                    'defaults' => array(
+                        'controller' => 'Event\Controller\Complaint',
+                        'action' => 'index'
+                    )
+                ),
+               ),
+            'jsonLugares' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/json-lugares-molina',//[/:in_id]
+                    'defaults' => array(
+                        'controller' => 'Event\Controller\Complaint',
+                        'action' => 'jsonLugares'
+                    )
+                ),
+               ),
+        
+            'jsonFecha' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/json-Event-Date',//[/:in_id]
+                    'defaults' => array(
+                        'controller' => 'Event\Controller\Index',
+                        'action' => 'jsonFecha'
+                    )
+                ),
+               ),
+              'AgregarEvent' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/agregar-event',//[/:in_id]
+                    'defaults' => array(
+                        'controller' => 'Event\Controller\Index',
+                        'action' => 'agregarEvent'
+                    )
+                ),
+               ),
+             'insertPictureEvent' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/agregar-picture',//[/:in_id]
+                    'defaults' => array(
+                        'controller' => 'Event\Controller\Index',
+                        'action' => 'insertPictureEvent'
+                    )
+                ),
+               ),
         ),
     ),
     'service_manager' => array(
@@ -71,9 +134,12 @@ return array(
             ),
         ),
     ),
-    'controllers' => array(
+    
+ 'controllers' => array(
         'invokables' => array(
-            'Event\Controller\Index' => 'Event\Controller\IndexController'
+            'Event\Controller\Index' => 'Event\Controller\IndexController',
+            'Event\Controller\Complaint' => 'Event\Controller\ComplaintController',
+            'Event\Controller\Place' => 'Event\Controller\PlaceController'
         ),
     ),
     'view_manager' => array(

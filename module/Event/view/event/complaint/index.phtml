@@ -1,0 +1,50 @@
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+  <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+  <script type="text/javascript" src="http://local.molina/js/vendor/gmaps.js"></script>
+  <script src="http://local.molina/js/libs/plugins/jqMarkerclusterer.js"></script>
+  <link rel="stylesheet" type="text/css" href="http://local.molina/css/example.css" />
+  <script type="text/javascript">
+   var map;
+   $(document).ready(function(){
+     map = new GMaps({
+       el: '#map',
+       zoom: 13,
+        lat: -12.043333,
+        lng: -77.028333,
+       markerClusterer: function(map) {
+   return new MarkerClusterer(map);
+ }
+
+     });
+     $(".map").on("click",function(){
+      var url = "http://local.molina/json-Event-Date";
+     console.log(url);
+     $.getJSON( url, function(data) {
+             $.each( data.response.docs, function(i, marker) {
+                 map.setCenter(marker.latitude,marker.longitude );
+                  console.log(marker);
+               map.addMarker({
+                   lat: marker.latitude,
+                   lng: marker.longitude,
+                   icon : {
+               size : new google.maps.Size(32, 37),
+               url : "http://local.molina/img/plugins/fancybox/fancybox_overlay.png"
+             },
+                   title: marker.description ,
+                   infoWindow: {
+                           content: marker.description + '</br> <a href=' + 'index.html' +'>ver denuncia </a>'
+                         }
+
+                 });
+
+
+             });
+
+         });
+     });
+     
+   });
+ </script>
+<h3 class="admin-title">Denuncias</h3>
+
+      <div id="map"></div>
